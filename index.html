@@ -1,352 +1,374 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinnamon Bar | Official</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamon Bar | Exclusive Nightlife</title>
+    <meta name="description" content="สัมผัสประสบการณ์ไนต์ไลฟ์ระดับพรีเมียมที่ Cinnamon Bar พัทยา">
 
-  <style>
-    /* 🌟 THEME VARIABLES */
-    :root {
-      --bg-dark: #0a0a0c;
-      --primary: #FF0055;
-      --primary-glow: rgba(255, 0, 85, 0.6);
-      --secondary: #00F0FF;
-      --text-light: #ffffff;
-      --text-muted: #aaaaaa;
-      --glass-bg: rgba(25, 25, 30, 0.6);
-      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Prompt', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      overflow-x: hidden;
-    }
-
-    /* 🧭 NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 10, 12, 0.8);
-      backdrop-filter: blur(15px);
-      border-bottom: var(--glass-border);
-      z-index: 1000;
-      transition: 0.3s ease;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--primary);
-      text-shadow: 0 0 15px var(--primary-glow);
-      text-decoration: none;
-      letter-spacing: 2px;
-    }
-    .nav-links { display: flex; gap: 30px; }
-    .nav-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary-glow); }
-
-    /* 📱 MOBILE MENU */
-    .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: white; }
-
-    /* 🌃 HERO SECTION */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to bottom, rgba(10,10,12,0.3), var(--bg-dark)), 
-                  url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      position: relative;
-    }
-    .hero-content {
-      z-index: 2;
-      animation: fadeInUp 1.5s ease;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      margin-bottom: 10px;
-    }
-    .hero h1 span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
-    .hero p { font-size: 1.2rem; color: #ddd; margin-bottom: 30px; font-weight: 300; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet">
     
-    .btn {
-      padding: 15px 35px;
-      font-size: 16px;
-      font-weight: 600;
-      font-family: 'Prompt', sans-serif;
-      text-decoration: none;
-      border-radius: 30px;
-      transition: 0.3s;
-      display: inline-block;
-    }
-    .btn-primary {
-      background: linear-gradient(45deg, var(--primary), #ff0088);
-      color: white;
-      box-shadow: 0 5px 20px var(--primary-glow);
-      border: none;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px var(--primary-glow); }
-    .btn-outline {
-      background: transparent;
-      color: var(--secondary);
-      border: 1px solid var(--secondary);
-      margin-left: 15px;
-    }
-    .btn-outline:hover { background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 15px rgba(0,240,255,0.4); }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* 📄 SECTION COMMON */
-    section { padding: 100px 50px; }
-    .section-title {
-      text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 50px;
-      text-transform: uppercase; letter-spacing: 2px;
-    }
-    .section-title span { color: var(--primary); }
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    /* 🍸 MENU SECTION */
-    #menu { background: radial-gradient(circle at left, #1a0812, var(--bg-dark)); }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .menu-card {
-      background: var(--glass-bg);
-      border: var(--glass-border);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: 0.4s ease;
-    }
-    .menu-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(255,0,85,0.2); }
-    .menu-icon { font-size: 40px; color: var(--secondary); margin-bottom: 15px; }
-    .menu-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--text-light); }
-    .menu-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 300; border-bottom: 1px dashed #333; padding-bottom: 5px; }
-    .menu-item .price { color: var(--primary); font-weight: 600; }
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            --bg-body: #050505;
+            --bg-section: #0a0a0a;
+            --accent-gold: #D4AF37;
+            --accent-pink: #990033;
+            --text-main: #Eaeaea;
+            --text-muted: #888888;
+            --glass: rgba(20, 20, 20, 0.7);
+            --border-glass: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    /* 📸 GALLERY SECTION */
-    #gallery { max-width: 1400px; margin: 0 auto; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-    .gallery-item {
-      height: 300px;
-      border-radius: 15px;
-      overflow: hidden;
-      position: relative;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: 0.5s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
-    .gallery-overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,0,85,0.3); opacity: 0; transition: 0.3s ease;
-      display: flex; justify-content: center; align-items: center; font-size: 30px; color: white;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* 📍 CONTACT / FOOTER */
-    #contact {
-      background: #050505;
-      padding: 80px 50px;
-      text-align: center;
-      border-top: 1px solid #222;
-    }
-    .contact-info { margin-bottom: 30px; font-weight: 300; color: var(--text-muted); line-spacing: 1.8; }
-    .contact-info i { color: var(--primary); margin-right: 10px; }
-    .social-links a {
-      display: inline-flex; justify-content: center; align-items: center;
-      width: 50px; height: 50px; border-radius: 50%;
-      background: #111; color: white; font-size: 20px; text-decoration: none;
-      margin: 0 10px; transition: 0.3s; border: var(--glass-border);
-    }
-    .social-links a:hover { background: var(--primary); transform: translateY(-5px); box-shadow: 0 5px 15px var(--primary-glow); }
-    .footer-text { margin-top: 50px; font-size: 12px; color: #555; }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #fff;
+        }
 
-    /* ✨ ANIMATIONS */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
 
-    /* 📱 RESPONSIVE */
-    @media (max-width: 768px) {
-      .navbar { padding: 20px; }
-      .nav-links {
-        position: absolute; top: 100%; left: 0; width: 100%;
-        background: rgba(10,10,12,0.95); flex-direction: column; gap: 0;
-        text-align: center; overflow: hidden; height: 0; transition: 0.3s ease;
-      }
-      .nav-links.active { height: 260px; border-bottom: var(--glass-border); }
-      .nav-links a { padding: 20px; display: block; border-bottom: 1px solid #222; }
-      .menu-toggle { display: block; }
-      
-      .hero h1 { font-size: 3rem; }
-      section { padding: 60px 20px; }
-      .btn-outline { margin-left: 0; margin-top: 15px; display: block; }
-    }
-  </style>
+        /* --- 2. NAVIGATION (Sticky & Blur) --- */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: var(--border-glass);
+            transition: 0.4s;
+        }
+        .navbar.scrolled { padding: 15px 5%; background: rgba(0,0,0,0.95); }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--accent-gold); }
+
+        .nav-menu { display: flex; gap: 40px; }
+        .nav-link {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 1px;
+            bottom: -5px; left: 0; background-color: var(--accent-gold);
+            transition: 0.3s;
+        }
+        .nav-link:hover { color: var(--accent-gold); }
+        .nav-link:hover::after { width: 100%; }
+
+        .btn-reserve {
+            padding: 10px 25px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn-reserve:hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        /* --- 3. HERO SECTION (Cinematic) --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?q=80&w=2029&auto=format&fit=crop') center/cover no-repeat fixed;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.95) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        .hero-subtitle {
+            color: var(--accent-gold);
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #ccc;
+            font-weight: 300;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .scroll-down {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            color: var(--text-muted); font-size: 12px; letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);} 40% {transform: translateY(-10px) translateX(-50%);} 60% {transform: translateY(-5px) translateX(-50%);} }
+
+        /* --- 4. ABOUT SECTION --- */
+        .section { padding: 100px 5%; background-color: var(--bg-body); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: center;
+        }
+        .about-img {
+            width: 100%; height: 500px; object-fit: cover;
+            filter: grayscale(100%); transition: 0.5s;
+            border-radius: 2px;
+        }
+        .about-img:hover { filter: grayscale(0%); }
+        .section-header { margin-bottom: 30px; }
+        .section-tag { color: var(--accent-gold); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-title { font-size: 2.5rem; margin-bottom: 20px; }
+        .text-body { color: var(--text-muted); font-weight: 300; margin-bottom: 30px; }
+
+        /* --- 5. MENU HIGHLIGHTS (Card Stack) --- */
+        .bg-darker { background-color: var(--bg-section); }
+        .menu-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
+        }
+        .menu-card {
+            background: #111;
+            padding: 40px;
+            border: 1px solid #222;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
+        .menu-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--accent-gold); transform: scaleX(0); transition: 0.4s; transform-origin: left;
+        }
+        .menu-card:hover::before { transform: scaleX(1); }
+        
+        .menu-icon { font-size: 30px; color: var(--accent-gold); margin-bottom: 20px; }
+        .menu-list-item {
+            display: flex; justify-content: space-between;
+            padding: 12px 0; border-bottom: 1px solid #222;
+            color: #ddd; font-weight: 300;
+        }
+        .menu-list-item span:last-child { color: var(--accent-gold); font-family: 'Playfair Display', serif; }
+
+        /* --- 6. GALLERY (Masonry Feel) --- */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 10px; height: 600px;
+        }
+        .gal-item { position: relative; overflow: hidden; height: 100%; }
+        .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; opacity: 0.7; }
+        .gal-item:hover img { transform: scale(1.05); opacity: 1; }
+        .g-1 { grid-column: span 2; grid-row: span 2; }
+        .g-2 { grid-column: span 1; }
+
+        /* --- 7. FOOTER --- */
+        footer {
+            background: #000; padding: 80px 5% 30px;
+            border-top: 1px solid #222;
+            text-align: center;
+        }
+        .footer-logo { font-family: 'Playfair Display'; font-size: 30px; margin-bottom: 20px; display: inline-block; color: #fff;}
+        .footer-info { color: var(--text-muted); margin-bottom: 40px; font-weight: 300; }
+        .socials a { color: #fff; margin: 0 15px; font-size: 18px; transition: 0.3s; }
+        .socials a:hover { color: var(--accent-gold); }
+        .copyright { margin-top: 50px; font-size: 12px; color: #444; border-top: 1px solid #111; padding-top: 20px;}
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .nav-menu { display: none; } /* Hide menu on mobile for simplicity or add hamburger later */
+            .hero-title { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; }
+            .g-1, .g-2 { grid-column: span 2; height: 300px; }
+        }
+    </style>
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
-    <a href="#" class="logo">CINNAMON.</a>
-    <div class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
-    <div class="nav-links" id="nav-links">
-      <a href="#home" onclick="toggleMenu()">หน้าแรก</a>
-      <a href="#about" onclick="toggleMenu()">เกี่ยวกับเรา</a>
-      <a href="#menu" onclick="toggleMenu()">เมนู</a>
-      <a href="#gallery" onclick="toggleMenu()">บรรยากาศ</a>
-      <a href="#contact" onclick="toggleMenu()">ติดต่อจองโต๊ะ</a>
-    </div>
-  </nav>
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">Cinnamon<span>.</span></a>
+        <ul class="nav-menu">
+            <li><a href="#about" class="nav-link">The Vibe</a></li>
+            <li><a href="#menu" class="nav-link">Menu</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        </ul>
+        <button class="btn-reserve" onclick="window.location.href='#contact'">Book a Table</button>
+    </nav>
 
-  <header class="hero" id="home">
-    <div class="hero-content">
-      <h1>Welcome to <span>Cinnamon</span></h1>
-      <p>ดื่มด่ำกับบรรยากาศสุดเอ็กซ์คลูซีฟ ปล่อยใจไปกับเสียงเพลงและเครื่องดื่มสุดพรีเมียม</p>
-      <div>
-        <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-wine-glass"></i> ดูเมนูของเรา</a>
-        <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-calendar-check"></i> จองโต๊ะเลย</a>
-      </div>
-    </div>
-  </header>
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <span class="hero-subtitle">Premium Bar & Nightlife</span>
+            <h1 class="hero-title">Elevate Your Night <br>at <span style="font-style: italic; color:var(--accent-gold);">Cinnamon</span></h1>
+            <p class="hero-desc">ดื่มด่ำกับบรรยากาศสุด Exclusive ใจกลางพัทยา พร้อมเครื่องดื่มระดับพรีเมียมและดนตรีที่คัดสรรมาเพื่อคุณโดยเฉพาะ</p>
+            <a href="#menu" class="btn-reserve" style="background: var(--accent-gold); color: #000; padding: 15px 40px; font-weight: 600;">Explore Menu</a>
+        </div>
+        <div class="scroll-down">SCROLL DOWN</div>
+    </header>
 
-  <section id="about" class="reveal">
-    <h2 class="section-title">Who <span>We Are</span></h2>
-    <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
-      <p><strong>Cinnamon Bar</strong> ไม่ใช่แค่ร้านเหล้า แต่มันคือ Community ของคนเก๋ๆ ที่ชื่นชอบความสนุกสนานและเสียงดนตรี! บรรยากาศหรูหรา ถ่ายรูปสวยทุกมุม เครื่องดื่มคุณภาพจัดเต็ม แสงสีเสียงอลังการ พร้อมพนักงาน PR สาวสวยดูแลดุจคนรู้ใจ (กระซิบ: ถ้าเมาแล้วระวังมือถือตกน้ำนะจ๊ะ เตือนแล้วนะ!) 🥂✨</p>
-    </div>
-  </section>
+    <section class="section" id="about">
+        <div class="about-grid">
+            <div data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1574096079513-d8259969755e?q=80&w=1000&auto=format&fit=crop" alt="Bar Vibe" class="about-img">
+            </div>
+            <div data-aos="fade-left">
+                <div class="section-header">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">More Than Just a Bar</h2>
+                </div>
+                <p class="text-body">
+                    Cinnamon Bar คือจุดนัดพบของคนมีสไตล์ เราใส่ใจในทุกรายละเอียด ตั้งแต่การตกแต่งร้านสไตล์ Modern Luxury แสงสีเสียงระบบ Hi-End ไปจนถึงเครื่องดื่มที่รังสรรค์อย่างพิถีพิถัน 
+                </p>
+                <p class="text-body">
+                    ไม่ว่าคุณจะมาสังสรรค์กับเพื่อนฝูง หรือมองหาที่นั่งชิลล์หลังเลิกงาน เราพร้อมมอบประสบการณ์ Nightlife ที่ดีที่สุดในพัทยา ให้ค่ำคืนของคุณพิเศษกว่าที่เคย
+                </p>
+                <div style="margin-top: 30px;">
+                    <span style="display: block; font-size: 12px; color: var(--accent-gold); margin-bottom: 5px;">OPENING HOURS</span>
+                    <span style="font-size: 18px;">18:00 - 02:00 Daily</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="menu">
-    <h2 class="section-title">Signature <span>Menu</span></h2>
-    <div class="menu-grid">
-      
-      <div class="menu-card reveal">
-        <i class="fa-solid fa-beer-mug-empty menu-icon"></i>
-        <h3>Cold Beers</h3>
-        <div class="menu-item"><span>Leo / Chang</span><span class="price">80.-</span></div>
-        <div class="menu-item"><span>Singha</span><span class="price">90.-</span></div>
-        <div class="menu-item"><span>Heineken / San Miguel</span><span class="price">100.-</span></div>
-        <div class="menu-item"><span>Hoegaarden Rose/White</span><span class="price">180.-</span></div>
-      </div>
+    <section class="section bg-darker" id="menu">
+        <div class="hero-content" style="max-width: 100%;">
+            <span class="section-tag">Selection</span>
+            <h2 class="section-title">Curated Drinks</h2>
+        </div>
 
-      <div class="menu-card reveal" style="transition-delay: 0.2s;">
-        <i class="fa-solid fa-whiskey-glass menu-icon"></i>
-        <h3>Premium Spirits</h3>
-        <div class="menu-item"><span>Blend 285</span><span class="price">380.-</span></div>
-        <div class="menu-item"><span>Regency (แบน/กลม)</span><span class="price">450.- / 850.-</span></div>
-        <div class="menu-item"><span>Red Label</span><span class="price">1,200.-</span></div>
-        <div class="menu-item"><span>Black Label</span><span class="price">1,800.-</span></div>
-      </div>
+        <div class="menu-container">
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-solid fa-beer-mug-empty menu-icon"></i>
+                <h3 style="margin-bottom: 20px;">Signature Beers</h3>
+                <div class="menu-list-item"><span>Leo / Chang</span><span>80.-</span></div>
+                <div class="menu-list-item"><span>Singha</span><span>90.-</span></div>
+                <div class="menu-list-item"><span>Heineken</span><span>100.-</span></div>
+                <div class="menu-list-item"><span>Hoegaarden Rose</span><span>180.-</span></div>
+                <div class="menu-list-item"><span>Snowy Weizen</span><span>90.-</span></div>
+            </div>
 
-      <div class="menu-card reveal" style="transition-delay: 0.4s;">
-        <i class="fa-solid fa-martini-glass-citrus menu-icon"></i>
-        <h3>Cocktails & Specials</h3>
-        <div class="menu-item"><span>เหล้าปั่น (เหยือก)</span><span class="price">250.-</span></div>
-        <div class="menu-item"><span>B52 / Tequila (Shot)</span><span class="price">150.- / 120.-</span></div>
-        <div class="menu-item"><span>Mixer (น้ำแข็ง/น้ำ/โซดา/โค้ก)</span><span class="price">เริ่มต้น 30.-</span></div>
-        <div class="menu-item"><span>🥂 Lady Drink (เลี้ยงน้องๆ)</span><span class="price">100.-</span></div>
-      </div>
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-glass-whiskey menu-icon"></i>
+                <h3 style="margin-bottom: 20px;">Premium Spirits</h3>
+                <div class="menu-list-item"><span>Blend 285</span><span>380.-</span></div>
+                <div class="menu-list-item"><span>Regency (แบน)</span><span>450.-</span></div>
+                <div class="menu-list-item"><span>Regency (กลม)</span><span>850.-</span></div>
+                <div class="menu-list-item"><span>Red Label</span><span>1,200.-</span></div>
+                <div class="menu-list-item"><span>Black Label</span><span>1,800.-</span></div>
+            </div>
 
-    </div>
-  </section>
+            <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fa-solid fa-martini-glass-citrus menu-icon"></i>
+                <h3 style="margin-bottom: 20px;">Cocktail & Mix</h3>
+                <div class="menu-list-item"><span>เหล้าปั่น (Jug)</span><span>250.-</span></div>
+                <div class="menu-list-item"><span>B52 Shot</span><span>150.-</span></div>
+                <div class="menu-list-item"><span>Mixer (Coke/Soda/Water)</span><span>30.-</span></div>
+                <div class="menu-list-item"><span>Ice Bucket</span><span>50.-</span></div>
+                <div class="menu-list-item" style="color:var(--accent-pink);"><span>🥂 Lady Drink</span><span>100.-</span></div>
+            </div>
+        </div>
+    </section>
 
-  <section id="gallery">
-    <h2 class="section-title">Vibe & <span>Atmosphere</span></h2>
-    <div class="gallery-grid">
-      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1572116469696-31de0f502acb?auto=format&fit=crop&w=600&q=80" alt="Bar 1"><div class="gallery-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=600&q=80" alt="Bar 2"><div class="gallery-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?auto=format&fit=crop&w=600&q=80" alt="Bar 3"><div class="gallery-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80" alt="Bar 4"><div class="gallery-overlay"><i class="fa-brands fa-instagram"></i></div></div>
-    </div>
-  </section>
+    <section class="section" id="gallery" style="padding-bottom: 0;">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <span class="section-tag">Atmosphere</span>
+            <h2 class="section-title">The Cinnamon Vibe</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gal-item g-1"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1000&auto=format&fit=crop" alt="Party"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600&auto=format&fit=crop" alt="Drink"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1572116469696-31de0f502acb?q=80&w=600&auto=format&fit=crop" alt="Bar"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1534152283015-77d0628f322e?q=80&w=600&auto=format&fit=crop" alt="DJ"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?q=80&w=600&auto=format&fit=crop" alt="People"></div>
+        </div>
+    </section>
 
-  <footer id="contact">
-    <h2 class="section-title" style="margin-bottom: 30px;">Reserve a <span>Table</span></h2>
-    <div class="contact-info reveal">
-      <p><i class="fa-solid fa-location-dot"></i> 77/17 ม.10 หนองปรือ บางละมุง ชลบุรี 20150 (พัทยา)</p>
-      <p><i class="fa-solid fa-clock"></i> เปิดบริการทุกวัน : 18.00 น. - 02.00 น.</p>
-      <p><i class="fa-solid fa-phone"></i> จองโต๊ะโทร : 094-209-7058 (ผจก. โอเว่น)</p>
-    </div>
-    
-    <div class="social-links reveal">
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="#"><i class="fa-brands fa-line"></i></a>
-    </div>
+    <footer id="contact">
+        <div class="footer-logo">Cinnamon<span>.</span></div>
+        <div class="footer-info">
+            <p>77/17 Moo 10, Nong Prue, Bang Lamung, Chon Buri 20150</p>
+            <p>Reservation: 094-209-7058 (Khun Owen)</p>
+            <p>Open Daily: 18:00 - 02:00</p>
+        </div>
+        <div class="socials">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-line"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Cinnamon Bar. Designed with class by IT Best.
+        </div>
+    </footer>
 
-    <p class="footer-text">© 2026 Cinnamon Bar. All Rights Reserved. <br>Designed & System by IT Best (เบส)</p>
-  </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
 
-  <script>
-    // 1. Mobile Menu Toggle
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      if(window.innerWidth <= 768) {
-        navLinks.classList.toggle('active');
-      }
-    }
-
-    // 2. Navbar Scroll Effect (ใส่พื้นหลังตอนเลื่อนลง)
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        nav.style.background = 'rgba(8, 8, 10, 0.95)';
-        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
-      } else {
-        nav.style.background = 'rgba(10, 10, 12, 0.8)';
-        nav.style.boxShadow = 'none';
-      }
-    });
-
-    // 3. Scroll Reveal Animation (ให้รูปและข้อความเด้งขึ้นมาตอนเลื่อนไปถึง)
-    function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100; // ระยะที่ให้แสดง
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
-      }
-    }
-    window.addEventListener("scroll", reveal);
-    reveal(); // เรียกใช้ครั้งแรกเผื่อตัวไหนอยู่บนจอแล้ว
-  </script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
