@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinnamon Bar & Music | Official</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Prompt:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Cinnamon Bar | Official Website</title>
+    <meta name="description" content="ร้านนั่งชิวที่ดีที่สุดในพัทยา ดนตรีสด อาหารอร่อย เครื่องดื่มครบครัน">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* 🎨 THEME: Neon Cyber-Loft */
+        /* 🎨 THEME SETTINGS */
         :root {
             --bg: #050505;
             --surface: #121212;
-            --primary: #FF00E6; /* Neon Pink จากในรูป */
-            --secondary: #00F0FF; /* Neon Blue จากในรูป */
+            --primary: #FF0055; /* Neon Pink */
+            --secondary: #00F0FF; /* Neon Cyan */
             --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
+            --text-gray: #aaaaaa;
+            --gradient: linear-gradient(135deg, var(--primary), #9900ff);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
             font-family: 'Prompt', sans-serif;
             background-color: var(--bg);
@@ -29,257 +31,288 @@
             overflow-x: hidden;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 { font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-        .neon-text {
-            color: #fff;
-            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 40px var(--primary);
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* 🌟 UTILITIES */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 10px; }
+        .section-header p { color: var(--text-gray); font-size: 1.1rem; }
+        .btn {
+            display: inline-block; padding: 12px 30px; 
+            background: var(--gradient); color: #fff; 
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.4);
+            transition: 0.3s; border: none; cursor: pointer;
         }
-        .neon-text-blue {
-            color: #fff;
-            text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 0, 85, 0.6); }
 
-        /* --- NAVIGATION --- */
+        /* 🧭 NAVBAR */
         .navbar {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%; padding: 20px 0;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(10px);
             z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo { font-size: 24px; font-weight: 800; color: var(--text); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
         .logo span { color: var(--primary); }
-        .nav-links a { color: #aaa; text-decoration: none; margin-left: 30px; transition: 0.3s; font-size: 14px; }
-        .nav-links a:hover { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
-        .btn-book {
-            padding: 10px 25px; background: transparent; color: var(--primary);
-            border: 2px solid var(--primary); border-radius: 30px;
-            font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        .btn-book:hover { background: var(--primary); color: #fff; box-shadow: 0 0 20px var(--primary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 14px; transition: 0.3s; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--secondary); }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; }
 
-        /* --- HERO SECTION --- */
+        /* 🎬 HERO SECTION */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(0deg, var(--bg) 0%, rgba(0,0,0,0.4) 100%), 
-                        url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1920&auto=format&fit=crop'); /* Placeholder รูปบาร์ */
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1574096079513-d8259969755e?q=80&w=1920&auto=format&fit=crop');
             background-size: cover; background-position: center;
-            text-align: center; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
         }
-        .hero-content h1 { font-size: 5rem; line-height: 1; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2rem; color: #ddd; margin-bottom: 40px; font-weight: 300; }
-        
-        /* --- MENU HIGHLIGHTS --- */
-        .section { padding: 100px 5%; }
-        .section-title { text-align: center; font-size: 3rem; margin-bottom: 60px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
-        .section-title::after {
-            content: ''; display: block; width: 60%; height: 4px; background: var(--secondary);
-            margin: 10px auto 0; box-shadow: 0 0 15px var(--secondary);
-        }
+        .hero-content h1 { font-size: 5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-content span { color: var(--secondary); }
+        .hero-content p { font-size: 1.5rem; color: #ddd; margin-bottom: 40px; font-weight: 300; }
 
-        .menu-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        /* 🍸 MENU SECTION */
+        .menu-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn {
+            background: transparent; border: 1px solid var(--text-gray); color: var(--text-gray);
+            padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s;
         }
-        .menu-card {
-            background: var(--surface); border: 1px solid #333;
-            border-radius: 15px; padding: 20px; text-align: center;
-            transition: 0.3s; position: relative; overflow: hidden;
-        }
-        .menu-card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); }
-        .menu-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; filter: grayscale(50%); transition: 0.3s; }
-        .menu-card:hover img { filter: grayscale(0%); }
-        .price-tag { 
-            position: absolute; top: 30px; right: 30px; 
-            background: var(--primary); color: #fff; padding: 5px 15px; 
-            border-radius: 20px; font-weight: bold; box-shadow: 0 0 10px var(--primary);
-        }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-        /* --- TEAM SECTION (จากข้อมูลจริง) --- */
-        .team-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .menu-item {
+            background: var(--surface); border-radius: 15px; overflow: hidden;
+            border: 1px solid #222; transition: 0.3s;
         }
-        .team-card {
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            padding: 30px 10px; border-radius: 10px; text-align: center;
-            border-bottom: 2px solid var(--primary);
+        .menu-item:hover { transform: translateY(-10px); border-color: var(--secondary); }
+        .menu-img { width: 100%; height: 200px; object-fit: cover; }
+        .menu-info { padding: 20px; }
+        .menu-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center; }
+        .menu-title { font-size: 18px; font-weight: bold; }
+        .menu-price { color: var(--secondary); font-weight: bold; font-size: 18px; }
+        .menu-desc { color: var(--text-gray); font-size: 13px; }
+
+        /* 📸 GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; height: 500px; }
+        .gal-item { overflow: hidden; border-radius: 5px; position: relative; cursor: pointer; }
+        .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.8; }
+        .gal-item:hover img { transform: scale(1.1); opacity: 1; }
+        .g-wide { grid-column: span 2; }
+        .g-tall { grid-row: span 2; }
+
+        /* 📍 CONTACT */
+        .contact-box {
+            background: var(--surface); padding: 40px; border-radius: 20px;
+            text-align: center; border: 1px solid #333;
         }
-        .team-role { color: var(--primary); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        .team-name { font-size: 18px; font-weight: bold; }
-        .team-nick { color: #666; font-size: 14px; }
+        .contact-info i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+        .contact-info p { margin-bottom: 20px; color: #ccc; }
 
-        /* --- GALLERY (Masonry) --- */
-        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; height: 500px; }
-        .gal-item { overflow: hidden; border-radius: 5px; position: relative; }
-        .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gal-item:hover img { transform: scale(1.1); }
-        .g-big { grid-column: span 2; grid-row: span 2; }
-
-        /* --- FOOTER --- */
-        footer { background: #000; padding: 50px 5%; border-top: 1px solid #222; text-align: center; }
-        .socials a { color: #fff; margin: 0 15px; font-size: 24px; transition: 0.3s; }
-        .socials a:hover { color: var(--secondary); transform: scale(1.2); }
-
-        /* Mobile */
+        /* 📱 MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 3rem; }
-            .nav-links { display: none; }
-            .gallery { grid-template-columns: 1fr 1fr; height: auto; }
-            .g-big { grid-column: span 2; height: 300px; }
+            .gallery-grid { height: auto; grid-template-columns: 1fr 1fr; }
+            .g-wide, .g-tall { grid-column: span 1; grid-row: span 1; }
+            .nav-links { display: none; } /* Add JS toggle later if needed, keeps simple for now */
+            .hamburger { display: block; color: #fff; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">CINNAMON <span>BAR</span></div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#menu">Menu</a>
-            <a href="#team">Team</a>
-            <a href="#contact">Contact</a>
+        <div class="container nav-container">
+            <a href="#" class="logo">CINNAMON <span>BAR</span></a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="btn">จองโต๊ะ</a>
         </div>
-        <button class="btn-book" onclick="window.location.href='#contact'">BOOK TABLE</button>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 class="neon-text">NIGHT <br> LIFE</h1>
-            <p>Pattaya's Finest Bar & Music Experience</p>
-            <div style="margin-top: 30px;">
-                <a href="#menu" class="btn-book" style="background:var(--primary); color:white; padding:15px 40px;">ดูเมนู</a>
-            </div>
+    <header id="home" class="hero">
+        <div class="container hero-content" data-aos="fade-up">
+            <h1>THE BEST <span class="text-gradient">NIGHTLIFE</span> <br> IN PATTAYA</h1>
+            <p>ดื่มด่ำบรรยากาศสุดชิลล์ เครื่องดื่มระดับพรีเมียม และดนตรีสดมันส์ๆ</p>
+            <a href="#menu" class="btn">ดูเมนูแนะนำ</a>
         </div>
     </header>
 
-    <section id="about" class="section" style="background: var(--surface);">
-        <div data-aos="fade-right">
-            <h2 class="section-title">THE <span class="neon-text-blue">VIBE</span></h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #aaa; line-height: 1.8;">
-                สัมผัสบรรยากาศสุดชิลล์ที่ <strong>Cinnamon Bar (PIM 08 BAR)</strong> ร้านนั่งชิวที่ครบเครื่องที่สุดในพัทยา! 
-                ไม่ว่าจะเป็นโต๊ะพูลมาตรฐาน ดนตรีสดสุดมันส์ หรือเครื่องดื่มเย็นเจี๊ยบ เราพร้อมบริการคุณ 
-                ตกแต่งสไตล์ Neon Loft ถ่ายรูปสวยทุกมุม
-            </p>
-        </div>
-    </section>
-
-    <section class="section" style="padding-bottom: 0;">
-        <div class="gallery">
-            <div class="gal-item g-big" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1574096079513-d8259969755e?q=80&w=800&auto=format&fit=crop" alt="Bar Atmosphere"></div>
-            <div class="gal-item" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1605218427368-35b8689c0907?q=80&w=400&auto=format&fit=crop" alt="Pool Table"></div>
-            <div class="gal-item" data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400&auto=format&fit=crop" alt="Drinks"></div>
-            <div class="gal-item" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1582239401777-622dfb239433?q=80&w=400&auto=format&fit=crop" alt="Neon Light"></div>
-            <div class="gal-item" data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1572116469696-31de0f502acb?q=80&w=400&auto=format&fit=crop" alt="Party"></div>
-        </div>
-    </section>
-
     <section id="menu" class="section">
-        <h2 class="section-title">SIGNATURE <span class="neon-text">DRINKS</span></h2>
-        <div class="menu-grid">
-            <div class="menu-card" data-aos="flip-left">
-                <div class="price-tag">250.-</div>
-                <img src="https://images.unsplash.com/photo-1575023782549-62ca2d2f3b84?q=80&w=400&auto=format&fit=crop" alt="Hoegaarden">
-                <h3>Hoegaarden Rose</h3>
-                <p style="color:#888; font-size:12px;">เบียร์สดรสกุหลาบ หอมหวานทานง่าย</p>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>OUR <span class="text-gradient">MENU</span></h2>
+                <p>คัดสรรเครื่องดื่มและอาหารที่ดีที่สุดเพื่อคุณ</p>
             </div>
-            <div class="menu-card" data-aos="flip-left" data-aos-delay="100">
-                <div class="price-tag">1,800.-</div>
-                <img src="https://images.unsplash.com/photo-1527281400683-1aae777175f8?q=80&w=400&auto=format&fit=crop" alt="Black Label">
-                <h3>Black Label</h3>
-                <p style="color:#888; font-size:12px;">วิสกี้พรีเมียม เสิร์ฟพร้อมมิกเซอร์ชุดใหญ่</p>
+
+            <div class="menu-tabs" data-aos="fade-up">
+                <button class="tab-btn active" onclick="filterMenu('all')">ทั้งหมด</button>
+                <button class="tab-btn" onclick="filterMenu('beer')">เบียร์</button>
+                <button class="tab-btn" onclick="filterMenu('spirits')">เหล้า/วิสกี้</button>
+                <button class="tab-btn" onclick="filterMenu('cocktail')">ค็อกเทล</button>
+                <button class="tab-btn" onclick="filterMenu('food')">กับแกล้ม</button>
             </div>
-            <div class="menu-card" data-aos="flip-left" data-aos-delay="200">
-                <div class="price-tag">850.-</div>
-                <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=400&auto=format&fit=crop" alt="Regency">
-                <h3>Regency</h3>
-                <p style="color:#888; font-size:12px;">บรั่นดีไทยยอดนิยม กลมกล่อม</p>
-            </div>
-            <div class="menu-card" data-aos="flip-left" data-aos-delay="300">
-                <div class="price-tag">80.-</div>
-                <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=400&auto=format&fit=crop" alt="Leo Beer">
-                <h3>Cold Beer</h3>
-                <p style="color:#888; font-size:12px;">Leo / Chang / Singha เย็นเจี๊ยบชื่นใจ</p>
+
+            <div class="menu-grid" id="menuGrid">
+                
+                <div class="menu-item beer" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1575023782549-62ca2d2f3b84?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">Hoegaarden Rose</span><span class="menu-price">180.-</span></div>
+                        <p class="menu-desc">เบียร์สดกลิ่นกุหลาบ หอมหวานทานง่าย</p>
+                    </div>
+                </div>
+                <div class="menu-item beer" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1623592532578-4395bd97d934?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">Leo / Chang / Singha</span><span class="menu-price">80.-</span></div>
+                        <p class="menu-desc">เบียร์ขวดเย็นเจี๊ยบ ชื่นใจ</p>
+                    </div>
+                </div>
+
+                <div class="menu-item spirits" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1628519588662-79339ae74677?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">Black Label</span><span class="menu-price">1,800.-</span></div>
+                        <p class="menu-desc">วิสกี้พรีเมียม (ขวด) พร้อมมิกเซอร์</p>
+                    </div>
+                </div>
+                <div class="menu-item spirits" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">Regency</span><span class="menu-price">850.-</span></div>
+                        <p class="menu-desc">บรั่นดีไทยยอดนิยม (แบน/กลม)</p>
+                    </div>
+                </div>
+
+                <div class="menu-item cocktail" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">Blue Kamikaze</span><span class="menu-price">250.-</span></div>
+                        <p class="menu-desc">ค็อกเทลสีฟ้าสดใส รสเปรี้ยวหวาน (เหยือก)</p>
+                    </div>
+                </div>
+                <div class="menu-item cocktail" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1572116469696-31de0f502acb?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">B52 Shot</span><span class="menu-price">150.-</span></div>
+                        <p class="menu-desc">ช็อตไฟลุกในตำนาน ต้องลอง!</p>
+                    </div>
+                </div>
+
+                <div class="menu-item food" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">เฟรนช์ฟรายส์</span><span class="menu-price">89.-</span></div>
+                        <p class="menu-desc">ทอดกรอบๆ จิ้มซอสสูตรเด็ด</p>
+                    </div>
+                </div>
+                <div class="menu-item food" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=500" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-header"><span class="menu-title">เอ็นไก่ทอด</span><span class="menu-price">120.-</span></div>
+                        <p class="menu-desc">กับแกล้มยอดฮิต เคี้ยวเพลิน</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="team" class="section" style="background: #0f0f0f;">
-        <h2 class="section-title">OUR <span class="neon-text-blue">CREW</span></h2>
-        <div class="team-grid">
-            <div class="team-card" data-aos="fade-up">
-                <div class="team-role">Manager</div>
-                <div class="team-name">นันฐพัฒน์</div>
-                <div class="team-nick">"โอเว่น"</div>
+    <section id="gallery" class="section" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>THE <span class="text-gradient">VIBE</span></h2>
+                <p>บรรยากาศร้านที่คุณจะหลงรัก</p>
             </div>
-            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-role">IT Support</div>
-                <div class="team-name">นฤเบศ</div>
-                <div class="team-nick">"เบส"</div>
-            </div>
-            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-role">PR</div>
-                <div class="team-name">อภัสรา</div>
-                <div class="team-nick">"ฝ้าย"</div>
-            </div>
-            <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="team-role">PR</div>
-                <div class="team-name">ศิริลักษณ์</div>
-                <div class="team-nick">"แป้ง"</div>
-            </div>
-            <div class="team-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="team-role">PR</div>
-                <div class="team-name">ธิดารัตน์</div>
-                <div class="team-nick">"ขนุน"</div>
-            </div>
-            <div class="team-card" data-aos="fade-up" data-aos-delay="500" style="border-bottom-color: var(--secondary);">
-                <div class="team-role" style="color:var(--secondary);">CEO</div>
-                <div class="team-name">มนัสวี</div>
-                <div class="team-nick">"ใหม่"</div>
+            
+            <div class="gallery-grid">
+                <div class="gal-item g-wide" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800"></div>
+                <div class="gal-item g-tall" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1574096079513-d8259969755e?q=80&w=600"></div>
+                <div class="gal-item" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1534152283015-77d0628f322e?q=80&w=400"></div>
+                <div class="gal-item" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1582239401777-622dfb239433?q=80&w=400"></div>
+                <div class="gal-item g-wide" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?q=80&w=800"></div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section">
-        <h2 class="section-title">FIND <span class="neon-text">US</span></h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
-            <div style="flex: 1; min-width: 300px; background: var(--surface); padding: 30px; border-radius: 15px; border: 1px solid #333;">
-                <h3 style="margin-bottom: 20px; color: var(--secondary);">Location</h3>
-                <p style="color: #ccc; margin-bottom: 15px;">
-                    <i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right: 10px;"></i>
-                    77/17 หมู่ 10 หนองปรือ, บางละมุง, ชลบุรี 20150
-                </p>
-                <p style="color: #ccc; margin-bottom: 15px;">
-                    <i class="fa-solid fa-phone" style="color:var(--primary); margin-right: 10px;"></i>
-                    094-209-7058 (คุณโอเว่น)
-                </p>
-                <p style="color: #ccc;">
-                    <i class="fa-solid fa-clock" style="color:var(--primary); margin-right: 10px;"></i>
-                    เปิดทุกวัน: 18:00 - 02:00 น.
-                </p>
+        <div class="container">
+            <div class="section-header">
+                <h2>CONTACT <span class="text-gradient">US</span></h2>
             </div>
-            <div style="flex: 1; min-width: 300px; height: 300px; background: #222; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #555;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.587664686259!2d100.9!3d12.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiAxMDDCsDU0JzAwLjAiRQ!5e0!3m2!1sen!2sth!4v1600000000000!5m2!1sen!2sth" width="100%" height="100%" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="contact-box" data-aos="zoom-in">
+                <div class="contact-info">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>ที่อยู่ร้าน</h3>
+                    <p>77/17 หมู่ 10 หนองปรือ, บางละมุง, ชลบุรี (พัทยา)</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>จองโต๊ะ</h3>
+                    <p>094-209-7058 (คุณโอเว่น)</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>เวลาเปิด</h3>
+                    <p>ทุกวัน 18:00 - 02:00 น.</p>
+                </div>
+                
+                <a href="tel:0942097058" class="btn" style="margin-top:20px;">📞 โทรจองเลย</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="logo" style="margin-bottom: 20px;">CINNAMON <span>BAR</span></div>
-        <div class="socials">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-line"></i></a>
-        </div>
-        <p style="margin-top: 30px; color: #555; font-size: 12px;">
-            &copy; 2026 Cinnamon Bar. Designed by IT Best.
-        </p>
+    <footer style="background:#000; padding:40px; text-align:center; border-top:1px solid #222;">
+        <div class="logo" style="margin-bottom:20px;">CINNAMON <span>BAR</span></div>
+        <p style="color:#666; font-size:12px;">© 2026 Cinnamon Bar. Designed by IT Best.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // เริ่ม Animation
         AOS.init({ duration: 1000, once: true });
+
+        // ระบบกรองเมนู
+        function filterMenu(category) {
+            // เปลี่ยนปุ่ม Active
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(category) || (category==='all' && btn.innerText==='ทั้งหมด')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // ซ่อน/โชว์รายการ
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                    item.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Navbar เปลี่ยนสีตอนเลื่อนจอ
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if(window.scrollY > 50) nav.style.background = 'rgba(0,0,0,0.95)';
+            else nav.style.background = 'rgba(5,5,5,0.85)';
+        });
     </script>
+    
+    <style>
+        @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    </style>
 </body>
 </html>
